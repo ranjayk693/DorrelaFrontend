@@ -1,0 +1,80 @@
+<section class="rental">
+  <section class="rental-header">
+    <!--It includes logo nav menu -->
+    <h1 style="text-align: center; color: #fff; font-weight: 900">
+      Dorrela Hai To Mumkin Hai!!
+    </h1>
+  </section>
+
+  <section class="rental-nav-bar">
+    <!-- details of pick up location and timming and sort by price-->
+    <section class="hamburger-menu" (click)="toogleMenu()">
+      <section class="line line1"></section>
+      <section class="line line2"></section>
+      <section class="line line3"></section>
+    </section>
+  </section>
+
+  <section class="rental-main">
+    <section
+      class="rental-filter"
+      [ngClass]="IsToggle ? 'hide-sidenav' : 'show-sidenav'"
+    >
+      <h3>Select Filters</h3>
+      <section class="rental-car-type">
+        <!-- List of checkbox like sedan ,SUV -->
+        <h3>Car Type</h3>
+        <mat-checkbox class="car-type"><span>Sedan</span></mat-checkbox>
+        <mat-checkbox class="car-type"><span>SUV</span></mat-checkbox>
+        <mat-checkbox class="car-type"><span>Sports car</span></mat-checkbox>
+      </section>
+      <section class="rental-package-type">
+        <!-- List of chckbox like Daily/Weelky/Monthly/Yearly -->
+        <h3>Package Type</h3>
+        <mat-checkbox class="example-margin">Daily</mat-checkbox>
+        <mat-checkbox class="example-margin">Weekly</mat-checkbox>
+        <mat-checkbox class="example-margin">Monthly</mat-checkbox>
+        <mat-checkbox class="example-margin">Yearly</mat-checkbox>
+      </section>
+    </section>
+
+    <section class="rental-main-class">
+      <section class="nav-filter">
+        <mat-form-field class="location-autocomplete">
+          <mat-label>Select Location</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button class="search-rental-btn">Search</button>
+      </section>
+    </section>
+  </section>
+
+  <section class="footer">
+    <!-- Footer details -->
+  </section>
+</section>
